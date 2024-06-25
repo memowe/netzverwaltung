@@ -2,22 +2,28 @@
 use Mojolicious::Lite -signatures;
 
 my $config = plugin 'NotYAMLConfig';
+plugin 'TagHelpers';
 
-get '/' => sub ($c) {
-  $c->render(template => 'index');
-};
+get '/' => 'welcome';
 
 app->start;
 __DATA__
 
-@@ index.html.ep
+@@ welcome.html.ep
 % layout 'default';
-% title 'Welcome';
-<h1>Welcome to the Mojolicious real-time web framework!</h1>
+% title 'Willkommen';
+%= t h1 => 'Herzlich Willkommen bei der Netzverwaltung'
+%= t p => begin
+    Sie sind nicht berechtigt, Verwaltungsinhalte abzurufen.
+% end
 
 @@ layouts/default.html.ep
-<!DOCTYPE html>
-<html>
-  <head><title><%= title %></title></head>
-  <body><%= content %></body>
+<!doctype html>
+<html lang="de">
+  <head><title><%= title %> - Die Netzverwaltung</title></head>
+  <body>
+    %= t main => content
+    <hr>
+    <footer><p>&copy; Die Netzverwaltung</p></footer>
+  </body>
 </html>
