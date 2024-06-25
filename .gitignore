@@ -1,6 +1,9 @@
 # Vim swap files
 *.sw[a-p]
 
+# Hypnotoad deployment
+hypnotoad.pid
+
 # GitHub standard Perl gitignore
 
 !Build/

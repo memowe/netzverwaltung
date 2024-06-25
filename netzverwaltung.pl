@@ -1,6 +1,8 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite -signatures;
 
+my $config = plugin 'NotYAMLConfig';
+
 get '/' => sub ($c) {
   $c->render(template => 'index');
 };
